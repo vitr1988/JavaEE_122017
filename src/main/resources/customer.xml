@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customer salary="100000">
+    <age>25</age>
+    <name>Ivanov Ivan</name>
+</customer>
