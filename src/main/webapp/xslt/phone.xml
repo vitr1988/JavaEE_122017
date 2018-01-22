@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<phones>
+    <phone type="Телефон для связи">
+        <value>7(123)456-78-90</value>
+    </phone>
+    <phone type="Факс">
+        <value>7(123)456-78-09</value>
+    </phone>
+    <phone type="Мобильный">
+        <value>7(123)456-78-99</value>
+    </phone>
+    <phone type="Рабочий">
+        <value>7(123)456-78-95</value>
+    </phone>
+</phones>
