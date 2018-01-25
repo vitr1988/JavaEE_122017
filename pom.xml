@@ -118,6 +118,36 @@
           <warSourceDirectory>src/main/webapp</warSourceDirectory>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>com.samaxes.maven</groupId>
+        <artifactId>minify-maven-plugin</artifactId>
+        <version>1.7.6</version>
+        <executions>
+          <execution>
+            <id>default-minify</id>
+            <phase>package</phase><!-- When omitted defaults to 'process-resources' -->
+            <configuration>
+              <charset>UTF-8</charset>
+              <cssSourceDir>css</cssSourceDir>
+              <cssSourceFiles>
+                <cssSourceFile>style.css</cssSourceFile>
+              </cssSourceFiles>
+              <cssFinalFile>style-min.css</cssFinalFile>
+              <jsSourceDir>js</jsSourceDir>
+              <jsSourceFiles>
+                <jsSourceFile>closure.js</jsSourceFile>
+                <jsSourceFile>promise.js</jsSourceFile>
+              </jsSourceFiles>
+              <jsFinalFile>script-min.js</jsFinalFile>
+              <jsEngine>CLOSURE</jsEngine>
+            </configuration>
+            <goals>
+              <goal>minify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
