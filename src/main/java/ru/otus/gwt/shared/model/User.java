@@ -1,9 +1,21 @@
-package ru.otus.json.model;
+package ru.otus.gwt.shared.model;
 
-public class User {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+import java.io.Serializable;
+
+public class User implements IsSerializable {
 
     private String login;
     private String password;
+
+    public User() {
+    }
+
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 
     public String getLogin() {
         return login;

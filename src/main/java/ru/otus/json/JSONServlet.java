@@ -1,6 +1,6 @@
 package ru.otus.json;
 
-import ru.otus.json.model.User;
+import ru.otus.gwt.shared.model.User;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;

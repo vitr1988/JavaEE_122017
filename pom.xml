@@ -11,7 +11,21 @@
   <properties>
     <servlet.version>3.1.0</servlet.version>
     <hibernate.version>5.2.2.Final</hibernate.version>
+    <gwt.version>2.8.2</gwt.version>
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt</artifactId>
+        <version>${gwt.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -75,7 +89,35 @@
       <artifactId>jsoup</artifactId>
       <version>1.9.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-codeserver</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- This library has been put into jdk/jre/lib/ext folder -->
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>2.11.0</version>
+    </dependency>
   </dependencies>
+
+  <!-- Oracle Maven Repository -->
   <repositories>
     <repository>
       <id>maven.oracle.com</id>
@@ -100,8 +142,9 @@
       </releases>
     </pluginRepository>
   </pluginRepositories>
+
   <build>
-  <sourceDirectory>src/main/java</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -119,6 +162,7 @@
         </configuration>
       </plugin>
 
+      <!--Minify Maven Plugin-->
       <plugin>
         <groupId>com.samaxes.maven</groupId>
         <artifactId>minify-maven-plugin</artifactId>
@@ -132,8 +176,9 @@
               <cssSourceDir>css</cssSourceDir>
               <cssSourceFiles>
                 <cssSourceFile>style.css</cssSourceFile>
+                <cssSourceFile>MySampleApplication.css</cssSourceFile>
               </cssSourceFiles>
-              <cssFinalFile>style-min.css</cssFinalFile>
+              <cssFinalFile>style-all.css</cssFinalFile>
               <jsSourceDir>js</jsSourceDir>
               <jsSourceFiles>
                 <jsSourceFile>closure.js</jsSourceFile>
@@ -148,6 +193,44 @@
           </execution>
         </executions>
       </plugin>
+
+      <!--GWT Plugin-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>${gwt.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <module>ru.otus.gwt.MySampleApplication</module>
+          <extraJvmArgs>
+            -Xss1024K -Xmx1024M -Duser.language=ru -Duser.country=RU -Djavax.xml.parsers.DocumentBuilderFactory=com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl
+          </extraJvmArgs>
+          <logLevel>INFO</logLevel>
+          <copyWebapp>true</copyWebapp>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <runTarget>MySampleApplication.html</runTarget>
+          <extraParam>true</extraParam>
+          <extra>extras</extra>
+          <optimizationLevel>9</optimizationLevel>
+          <deploy>${project.build.directory}/gwtDeploy</deploy>
+        </configuration>
+      </plugin>
+
+      <!--Tomcat Plugin-->
+      <!--<plugin>-->
+        <!--<groupId>org.apache.tomcat.maven</groupId>-->
+        <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+        <!--<version>2.2</version>-->
+        <!--<configuration>-->
+          <!--<path>/JavaEE</path>&lt;!&ndash; leave it empty or add any known subdomain that is going to be used in production e.g. /web/ &ndash;&gt;-->
+        <!--</configuration>-->
+      <!--</plugin>-->
     </plugins>
   </build>
 </project>
