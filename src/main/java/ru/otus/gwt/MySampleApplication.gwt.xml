@@ -4,6 +4,11 @@
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="com.google.gwt.user.theme.clean.Clean" />
+    <inherits name="org.hibernate.validator.HibernateValidator" />
+
+    <replace-with class="ru.otus.gwt.client.validation.UserValidatorFactory">
+        <when-type-is class="javax.validation.ValidatorFactory" />
+    </replace-with>
     <!--i18n-->
     <inherits name="com.google.gwt.i18n.I18N"/>
     <extend-property name="locale" values="en"/>

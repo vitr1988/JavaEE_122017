@@ -2,11 +2,17 @@ package ru.otus.gwt.shared.model;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class User implements IsSerializable {
 
+    @NotNull
+    @Size(min = 4, message = "Login must contain at least 4 characters.")
     private String login;
+
+    @NotNull
     private String password;
 
     public User() {

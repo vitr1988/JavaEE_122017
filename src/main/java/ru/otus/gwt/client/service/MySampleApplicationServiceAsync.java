@@ -5,5 +5,5 @@ import ru.otus.gwt.shared.model.User;
 
 public interface MySampleApplicationServiceAsync {
     void getMessage(String msg, AsyncCallback<String> async);
-    void authorize(User user, AsyncCallback<Boolean> async);
+    void authorize(User user, AsyncCallback<Void> async);
 }

@@ -4,6 +4,8 @@
     <ui:style>
         .redButton {
             font-size: 10px;
+        }
+        .error {
             color: red;
         }
     </ui:style>
@@ -19,5 +21,8 @@
         <g:HorizontalPanel>
             <g:Button text="{res.logon_button_alt}" ui:field="submit" addStyleNames="{style.redButton}"></g:Button>
         </g:HorizontalPanel>
+
+        <!--<g:DialogBox text="Hello" ui:field="dialog"></g:DialogBox>-->
+
     </g:VerticalPanel>
 </ui:UiBinder>

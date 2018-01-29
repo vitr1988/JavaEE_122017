@@ -9,9 +9,13 @@ import com.google.gwt.user.client.ui.*;
 import ru.otus.gwt.client.service.MySampleApplicationService;
 import ru.otus.gwt.client.service.MySampleApplicationServiceAsync;
 import ru.otus.gwt.client.text.MySampleApplicationConstants;
-//import ru.otus.gwt.shared.Validator;
-import ru.otus.gwt.shared.Validator;
+import ru.otus.gwt.client.widget.MainView;
+import ru.otus.gwt.shared.ValidatorRule;
+import ru.otus.gwt.shared.exception.WrongCredentialException;
 import ru.otus.gwt.shared.model.User;
+
+import javax.validation.ConstraintViolationException;
+import javax.validation.ValidatorFactory;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -32,37 +36,42 @@ public class MySampleApplication implements EntryPoint {
      */
     public void onModuleLoad() {
         initHeaderAndTitle();
+//
+//        Panel loginPanel = initAndGetLoginPanel();
+//        Panel passwordPanel = initAndGetPasswordPanel();
+//        final Button button = new Button(dictionary.logon_button_alt());
+//        Panel buttonPanel = initAndGetSubmitPanel(button);
+//
+//        VerticalPanel mainPanel = new VerticalPanel();
+//        mainPanel.add(loginPanel);
+//        mainPanel.add(passwordPanel);
+//        mainPanel.add(buttonPanel);
+//        mainPanel.setCellHorizontalAlignment(buttonPanel, HasHorizontalAlignment.ALIGN_CENTER);
+//
+//        button.addClickHandler((event) -> {
+//            User user = new User(getLogin(), getPassword());
+//            if (ValidatorRule.isValid(user)) {
+//                service.authorize(user, new AsyncCallback<Void>() {
+//                    @Override
+//                    public void onFailure(Throwable caught) {
+//                        if (caught instanceof WrongCredentialException) {
+//                            Window.alert(caught.getLocalizedMessage());
+//                        }
+//                        else if (caught instanceof ConstraintViolationException) {
+//                            Window.alert(caught.getLocalizedMessage());
+//                        }
+//                    }
+//                    @Override
+//                    public void onSuccess(Void result) {
+//                        Window.alert("Вход успешен!");
+//                    }
+//                });
+//            }
+//        });
+//
+//        RootPanel.get("slot").add(mainPanel);
 
-        Panel loginPanel = initAndGetLoginPanel();
-        Panel passwordPanel = initAndGetPasswordPanel();
-        final Button button = new Button(dictionary.logon_button_alt());
-        Panel buttonPanel = initAndGetSubmitPanel(button);
-
-        VerticalPanel mainPanel = new VerticalPanel();
-        mainPanel.add(loginPanel);
-        mainPanel.add(passwordPanel);
-        mainPanel.add(buttonPanel);
-        mainPanel.setCellHorizontalAlignment(buttonPanel, HasHorizontalAlignment.ALIGN_CENTER);
-
-        button.addClickHandler((event) -> {
-            User user = new User(getLogin(), getPassword());
-            if (Validator.isValid(user)) {
-                service.authorize(user, new AsyncCallback<Boolean>() {
-                    @Override
-                    public void onFailure(Throwable caught) {
-
-                    }
-                    @Override
-                    public void onSuccess(Boolean result) {
-                        Window.alert(result ? "Вход успешен!" : "Некорректный логин/пароль");
-                    }
-                });
-            }
-        });
-
-        RootPanel.get("slot").add(mainPanel);
-
-//        RootPanel.get("slot").add(new MainView());
+        RootPanel.get("slot").add(new MainView(service));
     }
 
     private Panel initAndGetPasswordPanel() {
