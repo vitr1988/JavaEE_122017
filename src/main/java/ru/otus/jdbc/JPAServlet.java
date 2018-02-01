@@ -20,17 +20,17 @@ public class JPAServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
+//        EntityTransaction transaction = em.getTransaction();
         try {
-            Query q = em.createQuery("from EmpEntity ");
+            Query q = em.createQuery("select emp from EmpEntity emp");
             List<EmpEntity> result = q.getResultList();
             try (PrintWriter pw = response.getWriter()){
                 result.stream().forEach(pw::println);
             }
-            transaction.commit();
+//            transaction.commit();
         }
         catch (Exception e){
-            transaction.rollback();
+//            transaction.rollback();
             throw new ServletException(e);
         }
         finally {
