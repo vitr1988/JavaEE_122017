@@ -171,6 +171,13 @@
       <artifactId>slf4j-api</artifactId>
       <version>1.7.12</version>
     </dependency>
+
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>8.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <!-- Oracle Maven Repository -->
