@@ -1,10 +1,8 @@
 package ru.otus.servlet;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.tools.ant.filters.StringInputStream;
 
-import javax.enterprise.concurrent.ManagedScheduledExecutorService;
-import javax.enterprise.concurrent.ManagedThreadFactory;
-import javax.annotation.Resource;
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -16,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.concurrent.Executors;
@@ -26,9 +25,6 @@ import java.util.concurrent.TimeUnit;
 public class AsyncServlet extends HttpServlet {
 
     public static final String TIMEOUT = "timeout";
-
-    @Resource
-    private ManagedScheduledExecutorService scheduledExecutorService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -45,11 +41,9 @@ public class AsyncServlet extends HttpServlet {
         final int timeoutInMsc = Integer.decode(timeout);
         final AsyncContext asyncContext = request.startAsync();
 
-        ScheduledExecutorService executor =
-                scheduledExecutorService == null ? Executors.newSingleThreadScheduledExecutor() :
-                        scheduledExecutorService;
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.schedule(() -> {
-            print(new StringInputStream(MessageFormat.format("Results have for for {0} secs", timeout)), asyncContext);
+            print(IOUtils.toInputStream(MessageFormat.format("Results have for for {0} secs", timeout)), asyncContext);
             return null;
         }, timeoutInMsc, TimeUnit.MILLISECONDS);
     }

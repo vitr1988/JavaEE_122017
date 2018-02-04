@@ -26,4 +26,19 @@ public class SampleServletContextListener implements ServletContextListener, Ser
          Application Server shuts down.
       */
     }
+
+    @Override
+    public void attributeAdded(ServletRequestAttributeEvent servletRequestAttributeEvent) {
+
+    }
+
+    @Override
+    public void attributeRemoved(ServletRequestAttributeEvent servletRequestAttributeEvent) {
+
+    }
+
+    @Override
+    public void attributeReplaced(ServletRequestAttributeEvent servletRequestAttributeEvent) {
+
+    }
 }
