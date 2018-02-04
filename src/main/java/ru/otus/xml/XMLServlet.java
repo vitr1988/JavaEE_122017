@@ -17,9 +17,6 @@ import java.io.PrintWriter;
 @WebServlet(name = "XMLServlet", urlPatterns = "/xml")
 public class XMLServlet extends HttpServlet {
 
-    @Resource(name="bean/XmlBeanFactory")
-    private XmlBean bean;
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try(PrintWriter writer = response.getWriter()){
             Customer c = new Customer();
@@ -27,12 +24,8 @@ public class XMLServlet extends HttpServlet {
             c.setId(123);
             c.setSalary(100000);
             c.setName("Ivanov Ivan");
-//            Context context = new InitialContext();
-//            XmlBean bean2 = (XmlBean) context.lookup("java:/comp/env/bean/XmlBeanFactory");
-            bean.process(c);
-            writer.println("xml path = " + bean.getXmlPath());
-        } /*catch (NamingException e) {
-            e.printStackTrace();
-        }*/
+
+            writer.println("There can be xml bean, but this is Tomcat specific feature");
+        }
     }
 }

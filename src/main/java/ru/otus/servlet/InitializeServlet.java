@@ -18,9 +18,6 @@ import java.util.concurrent.*;
 @WebServlet(name = "InitializeServlet", urlPatterns = "/init", loadOnStartup = 1)
 public class InitializeServlet extends HttpServlet {
 
-//    @Resource
-//    ManagedExecutorService service;
-
     public void init(ServletConfig sc) {
         String hello = "Hello World";
     }
