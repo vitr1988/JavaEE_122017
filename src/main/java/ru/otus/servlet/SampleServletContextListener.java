@@ -5,10 +5,12 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
 import java.util.Date;
 
 @WebListener()
-public class SampleServletContextListener implements ServletContextListener, ServletRequestAttributeListener {
+public class SampleServletContextListener implements ServletContextListener, ServletRequestAttributeListener, HttpSessionListener {
 
     // -------------------------------------------------------
     // ru.otus.servlet.SampleServletContextListener implementation
@@ -41,4 +43,13 @@ public class SampleServletContextListener implements ServletContextListener, Ser
     public void attributeReplaced(ServletRequestAttributeEvent servletRequestAttributeEvent) {
 
     }
+
+    @Override
+    public void sessionCreated(HttpSessionEvent se) {
+    }
+
+    @Override
+    public void sessionDestroyed(HttpSessionEvent se) {
+    }
+
 }

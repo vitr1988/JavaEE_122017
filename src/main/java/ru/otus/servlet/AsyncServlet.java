@@ -1,5 +1,6 @@
 package ru.otus.servlet;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.tools.ant.filters.StringInputStream;
 
 import javax.enterprise.concurrent.ManagedScheduledExecutorService;
@@ -18,6 +19,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.MessageFormat;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -49,9 +51,21 @@ public class AsyncServlet extends HttpServlet {
                 scheduledExecutorService == null ? Executors.newSingleThreadScheduledExecutor() :
                         scheduledExecutorService;
         executor.schedule(() -> {
-            print(new StringInputStream(MessageFormat.format("Results have for for {0} secs", timeout)), asyncContext);
+            print(new StringInputStream(MessageFormat.format("Results have being calculated for {0} secs", timeout)), asyncContext);
             return null;
         }, timeoutInMsc, TimeUnit.MILLISECONDS);
+
+//        CompletableFuture future = CompletableFuture.runAsync(() -> {
+//            try {
+//                Thread.sleep(timeoutInMsc);
+//                print(new StringInputStream(MessageFormat.format("Results have being calculated for {0} miliseconds", timeout)), asyncContext);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }, scheduledExecutorService);
+//        future.thenAccept((e) -> {
+//            asyncContext.complete();
+//        });
     }
 
     private void print(final InputStream largeText, final AsyncContext context) throws IOException {

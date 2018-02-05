@@ -3,13 +3,11 @@ package ru.otus.servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.PushBuilder;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet("/servlet")
+@WebServlet(name = "HTMLServlet", urlPatterns = "/servlet")
 public class HTMLServlet extends HttpServlet /*implements SingleThreadModel */{
 
     public HTMLServlet(){}
@@ -105,11 +103,19 @@ public class HTMLServlet extends HttpServlet /*implements SingleThreadModel */{
         if (pushBuilder != null) {
             pushBuilder.path("images/hotnews.png").push();
         }
+        HttpSession session = request.getSession(true);
         request.getRequestDispatcher("/page.html").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String param1 = request.getParameter("param");
+        HttpSession session = request.getSession(true);
+        session.setAttribute("items", new ArrayList<>());
+        session.setAttribute("sessionobject", new SessionObject());
         request.getRequestDispatcher("/WEB-INF/page.html").forward(request, response);
+        request.getServletContext().setAttribute("", "");
+
+        response.sendRedirect("");
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
