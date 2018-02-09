@@ -4,6 +4,12 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
+    
+    <context-param>
+        <param-name>testDataFileLocation</param-name>
+        <param-value>file:///F:/Project/Otus/JavaEE_122017/src/main/resources/data.xml</param-value>
+    </context-param>
+    
     <servlet>
         <servlet-name>ru.otus.gwt.mySampleApplication.MySampleApplication MySampleApplicationService</servlet-name>
         <servlet-class>ru.otus.gwt.server.MySampleApplicationServiceImpl</servlet-class>
