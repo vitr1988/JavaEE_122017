@@ -4,9 +4,14 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
+
     <servlet>
         <servlet-name>ru.otus.gwt.mySampleApplication.MySampleApplication MySampleApplicationService</servlet-name>
         <servlet-class>ru.otus.gwt.server.MySampleApplicationServiceImpl</servlet-class>
+        <!--<init-param>-->
+            <!--<param-name>databasePassword</param-name>-->
+            <!--<param-value>123</param-value>-->
+        <!--</init-param>-->
     </servlet>
     <servlet-mapping>
         <servlet-name>ru.otus.gwt.mySampleApplication.MySampleApplication MySampleApplicationService</servlet-name>
@@ -16,6 +21,11 @@
     <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
+    <context-param>
+        <param-name>databasePassword</param-name>
+        <param-value>123</param-value>
+    </context-param>
 
     <!--<security-constraint>-->
         <!--<web-resource-collection>-->

@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="counter" uri="/custom" %>
 <html>
 <head>
     <title>JSON Example</title>
@@ -49,6 +50,8 @@
     <textarea id="nashornResult" class="inputWidth" disabled></textarea>
 </div>
 
-
+<div>
+    Эту страницу посещали <counter:counter /> раз.
+</div>
 </body>
 </html>
