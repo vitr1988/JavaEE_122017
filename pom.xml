@@ -9,11 +9,16 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <ojdbc_driver.version>11.2.0.4</ojdbc_driver.version>
     <servlet.version>3.1.0</servlet.version>
     <jsp.version>2.3.1</jsp.version>
+    <jsoup.version>1.9.1</jsoup.version>
     <jstl.version>1.2.1</jstl.version>
+    <freemarker.version>2.3.23</freemarker.version>
+    <mustache.version>0.9.5</mustache.version>
     <!--<servlet.version>4.0.0</servlet.version>-->
     <hibernate.version>5.2.2.Final</hibernate.version>
+    <hibernate_validator.version>4.1.0.Final</hibernate_validator.version>
     <gwt.version>2.8.2</gwt.version>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
   </properties>
@@ -62,7 +67,7 @@
     <dependency>
       <groupId>com.oracle.jdbc</groupId>
       <artifactId>ojdbc6</artifactId>
-      <version>11.2.0.4</version>
+      <version>${ojdbc_driver.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -96,7 +101,7 @@
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.9.1</version>
+      <version>${jsoup.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -133,7 +138,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>4.1.0.Final</version>
+      <version>${hibernate_validator.version}</version>
       <exclusions>
         <exclusion>
           <groupId>javax.xml.bind</groupId>
@@ -150,7 +155,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>4.1.0.Final</version>
+      <version>${hibernate_validator.version}</version>
       <classifier>sources</classifier>
       <!-- "provided" so that we don't deploy -->
       <scope>provided</scope>
@@ -198,11 +203,23 @@
       </exclusions>
     </dependency>
 
-      <dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarker.version}</version>
+    </dependency>
+
+    <dependency>
           <groupId>com.github.spullara.mustache.java</groupId>
           <artifactId>compiler</artifactId>
-          <version>0.9.5</version>
+          <version>${mustache.version}</version>
       </dependency>
+
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-core</artifactId>
+      <version>2.3.1.2</version>
+    </dependency>
   </dependencies>
 
   <!-- Oracle Maven Repository -->
