@@ -1,3 +1,15 @@
-<h2>{{user}}</h2>
+<html>
+<head>
+    <title>Mustache</title>
+</head>
+<body>
+{{#todos}}
+    <h2>Hello, {{user}}.</h2>
 <small>Created on {{currentDate}}</small>
 <p>{{text}}</p>
+{{/todos}}
+{{^todos}}
+    <p>No todos!</p>
+{{/todos}}
+</body>
+</html>

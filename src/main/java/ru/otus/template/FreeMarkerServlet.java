@@ -18,7 +18,7 @@ public class FreeMarkerServlet extends HttpServlet {
         request.setAttribute("user", "Ivanov Vitalii");
         request.setAttribute("x", 2);
         request.setAttribute("foo", true);
-        request.setAttribute("bar", "Test");
+        request.setAttribute("bar", "  Test   ");
 
         Employee emp = new Employee();
         emp.setName("Vitalii Ivanov");

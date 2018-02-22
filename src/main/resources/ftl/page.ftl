@@ -1,9 +1,10 @@
 <#assign cc=JspTaglibs["/WEB-INF/counter.tld"]>
+<#assign text="gfsdjklgf">
 
 <html>
 <body>
 
-<h1>Hello ${user}!</h1>
+<h1>Hello ${user!"Vasya"}!</h1>
 
 This is <@cc.counter /> times of entering this page!
 ${ 2 + 2 }
