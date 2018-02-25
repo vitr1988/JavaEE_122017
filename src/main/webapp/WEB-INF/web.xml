@@ -16,6 +16,7 @@
     <servlet-mapping>
         <servlet-name>ru.otus.gwt.mySampleApplication.MySampleApplication MySampleApplicationService</servlet-name>
         <url-pattern>/MySampleApplication/MySampleApplicationService</url-pattern>
+        <url-pattern>/MySampleApplication/contactsService</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

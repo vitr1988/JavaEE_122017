@@ -20,4 +20,26 @@ public interface MySampleApplicationConstants extends Constants {
     String form_header();
 
     String title();
+
+    @Key("firstName.label.alt")
+    String firsName_label_alt();
+
+    @Key("lastName.label.alt")
+    String lastName_label_alt();
+
+    @Key("email.label.alt")
+    String email_label_alt();
+
+    @Key("add.button.alt")
+    String add_button_alt();
+
+    @Key("delete.button.alt")
+    String delete_button_alt();
+
+    @Key("save.button.alt")
+    String save_button_alt();
+
+    @Key("cancel.button.alt")
+    String cancel_button_alt();
+
 }

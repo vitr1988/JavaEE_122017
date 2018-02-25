@@ -1,5 +1,7 @@
 package ru.otus.gwt.client;
 
+import static ru.otus.gwt.client.dictionary.Constants.*;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
@@ -23,7 +25,6 @@ import javax.validation.ValidatorFactory;
 public class MySampleApplication implements EntryPoint {
 
     private static MySampleApplicationServiceAsync service = GWT.create(MySampleApplicationService.class);
-    private static MySampleApplicationConstants dictionary = GWT.create(MySampleApplicationConstants.class);
 
     public static final String LABEL_CLASS_NAME = "firstColumnWidth";
     public static final String INPUT_CLASS_NAME = "inputWidth";
@@ -76,7 +77,7 @@ public class MySampleApplication implements EntryPoint {
 
     private Panel initAndGetPasswordPanel() {
         HorizontalPanel passwordPanel = new HorizontalPanel();
-        Label passwordLabel = new Label(dictionary.password_label_alt());
+        Label passwordLabel = new Label(RESOURCE.password_label_alt());
         passwordPanel.add(passwordLabel);
         passwordLabel.addStyleName(LABEL_CLASS_NAME);
         passwordTextBox = new PasswordTextBox();
@@ -87,13 +88,13 @@ public class MySampleApplication implements EntryPoint {
 
     private Panel initAndGetLoginPanel() {
         HorizontalPanel loginPanel = new HorizontalPanel();
-        Label loginLabel = new Label(dictionary.login_label_alt());
+        Label loginLabel = new Label(RESOURCE.login_label_alt());
         loginPanel.add(loginLabel);
         loginLabel.addStyleName(LABEL_CLASS_NAME);
         loginTextBox = new TextBox();
         loginPanel.add(loginTextBox);
         loginTextBox.addStyleName(INPUT_CLASS_NAME);
-        loginTextBox.getElement().setAttribute("placeholder", dictionary.login_placeholder_alt());
+        loginTextBox.getElement().setAttribute("placeholder", RESOURCE.login_placeholder_alt());
         return loginPanel;
     }
 
@@ -112,7 +113,7 @@ public class MySampleApplication implements EntryPoint {
     }
 
     private void initHeaderAndTitle(){
-        Document.get().getElementById("header").setInnerText(dictionary.form_header());
-        Document.get().getElementById("title").setInnerText(dictionary.title());
+        Document.get().getElementById("header").setInnerText(RESOURCE.form_header());
+        Document.get().getElementById("title").setInnerText(RESOURCE.title());
     }
 }

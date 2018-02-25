@@ -16,7 +16,8 @@
     <set-property-fallback name="locale" value="ru"/>
 
     <!-- Specify the app entry point class.                   -->
-    <entry-point class='ru.otus.gwt.client.MySampleApplication'/>
+    <!--<entry-point class='ru.otus.gwt.client.MySampleApplication'/>-->
+    <entry-point class='ru.otus.gwt.client.Contacts'/>
     <!-- Specify the app servlets.                   -->
     <servlet path='/MySampleApplicationService'
              class='ru.otus.gwt.server.MySampleApplicationServiceImpl'/>
