@@ -27,7 +27,6 @@ public class AsyncServlet extends HttpServlet {
     public static final String TIMEOUT = "timeout";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String timeout = request.getParameter(TIMEOUT);
         if (Objects.isNull(timeout)){
             response.setContentType("text/html");
