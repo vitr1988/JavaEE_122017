@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Server Sent events</title>
+    <script type="javascript">
+        var source = new EventSource("/sse");
+        source.onmessage = function (event) {
+            var data = JSON.parse(event.data);
+            document.getElementById('plot').value = data.data;
+        }
+    </script>
+</head>
+<body>
+    <div id="plot">Здесь могла быть Ваша реклама</div>
+</body>
+</html>
