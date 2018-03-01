@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-@ServerEndpoint("/ratesrv")
+@ServerEndpoint(value = "/ratesrv")
 public class RateServerEndpoint {
         //queue holds the list of connected clients
         private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
         private static Thread rateThread ; //rate publisher thread
         static {
             //rate publisher thread, generates a new value for USD rate every 2 seconds.
-            rateThread=new Thread(){
+            rateThread = new Thread(){
                 public void run() {
                     DecimalFormat df = new DecimalFormat("#.####");
                     while(true)

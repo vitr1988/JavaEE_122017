@@ -10,6 +10,8 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import ru.otus.gwt.client.event.AddContactEvent;
 import ru.otus.gwt.client.event.EditContactEvent;
+import ru.otus.gwt.client.event.websocket.MessageEvent;
+import ru.otus.gwt.client.event.websocket.WebSocket;
 import ru.otus.gwt.client.service.ContactsServiceAsync;
 import ru.otus.gwt.shared.model.ContactDetails;
 
@@ -41,6 +43,14 @@ public class ContactsPresenter implements Presenter {
   }
 
   public void bind() {
+
+    WebSocket webSocket = new WebSocket("ws://localhost:8080/JavaEE/ratesrv");
+    webSocket.onmessage = (evt) -> {
+      MessageEvent event = evt.cast();
+      Window.alert(event.getData());
+      return evt;
+    };
+
     display.getAddButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         eventBus.fireEvent(new AddContactEvent());
