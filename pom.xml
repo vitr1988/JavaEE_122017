@@ -345,15 +345,18 @@
                 </configuration>
             </plugin>
 
-            <!--Tomcat Plugin
+            <!--Tomcat Plugin -->
             <plugin>
               <groupId>org.apache.tomcat.maven</groupId>
               <artifactId>tomcat7-maven-plugin</artifactId>
               <version>2.2</version>
               <configuration>
-                <path>/JavaEE</path>&lt;!&ndash; leave it empty or add any known subdomain that is going to be used in production e.g. /web/ &ndash;&gt;
+                  <url>http://localhost:8080/manager/text</url>
+                  <path>/JavaEE</path><!-- leave it empty or add any known subdomain that is going to be used in production e.g. /web/ -->
+                  <username>admin</username>
+                  <password>admin</password>
               </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 </project>
