@@ -353,8 +353,8 @@
               <configuration>
                   <url>http://localhost:8080/manager/text</url>
                   <path>/JavaEE</path><!-- leave it empty or add any known subdomain that is going to be used in production e.g. /web/ -->
-                  <username>admin</username>
-                  <password>admin</password>
+                  <!--<username>admin</username>
+                  <password>admin</password>-->
               </configuration>
             </plugin>
             <plugin>
