@@ -252,8 +252,8 @@
                 <updatePolicy>always</updatePolicy>
             </releases>
         </repository>
-    </repositories>-->
-    <!--<pluginRepositories>
+    </repositories>
+    <pluginRepositories>
         <pluginRepository>
             <id>maven.oracle.com</id>
             <name>oracle-maven-repo</name>
@@ -269,6 +269,14 @@
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
+            <!--<plugin>-->
+                <!--<groupId>ru.otus.plugin</groupId>-->
+                <!--<artifactId>mavenplugin</artifactId>-->
+                <!--<version>1.0-SNAPSHOT</version>-->
+                <!--<configuration>-->
+                    <!--<msg>JavaEE_122017 Project</msg>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
