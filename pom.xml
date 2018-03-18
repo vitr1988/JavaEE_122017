@@ -14,6 +14,7 @@
     <jsp.version>2.3.1</jsp.version>
     <hibernate.version>5.2.2.Final</hibernate.version>
     <gwt.version>2.8.2</gwt.version>
+    <jersey.version>2.26</jersey.version>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
   </properties>
 
@@ -242,17 +243,22 @@
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-server</artifactId>
-      <version>2.25.1</version>
+      <version>${jersey.version}</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet</artifactId>
-      <version>2.25.1</version>
+      <version>${jersey.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+      <version>${jersey.version}</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.ext</groupId>
       <artifactId>jersey-bean-validation</artifactId>
-      <version>2.25.1</version>
+      <version>${jersey.version}</version>
     </dependency>
     <!-- https://github.com/swagger-api/swagger-core/issues/1170 -->
     <dependency>
