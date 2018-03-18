@@ -1,15 +1,20 @@
 package ru.otus.jaxrs;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/calculator")
+@Api
 public class RestfulCalculator implements Calculatable {
 
     @GET
     @Path("/sqrt/{value}")
     @Produces(MediaType.TEXT_HTML)
+    @ApiOperation(value = "Sqrt of value")
     public Response calcSqrt(@PathParam("value") int value) {
         double answer = Math.sqrt(value);
         String msg = String.format("calcSqrt==> value: %d, answer: %10.4f", value, answer);
@@ -19,6 +24,7 @@ public class RestfulCalculator implements Calculatable {
     @GET
     @Path("/plus/{value1}/{value2}")
     @Produces(MediaType.TEXT_HTML)
+    @ApiOperation(value = "Add two values")
     public Response calcAddTwoValues(@PathParam("value1") double value1,
                                      @PathParam("value2") double value2) {
         double answer = value1 + value2;
@@ -30,6 +36,7 @@ public class RestfulCalculator implements Calculatable {
     @GET
     @Path("/minus/{value1}/{value2}")
     @Produces(MediaType.TEXT_HTML)
+    @ApiOperation(value = "Subtract two values")
     public Response calcSubTwoValues(@PathParam("value1") double value1,
                                      @PathParam("value2") double value2) {
         double answer = value1 - value2;
@@ -41,6 +48,7 @@ public class RestfulCalculator implements Calculatable {
     @GET
     @Path("/div/{value1}/{value2}")
     @Produces(MediaType.TEXT_HTML)
+    @ApiOperation(value = "Divide two values")
     public Response calcDivTwoValues(@PathParam("value1") double value1,
                                      @PathParam("value2") double value2) {
         if (value2 == 0) {

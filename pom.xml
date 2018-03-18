@@ -220,7 +220,7 @@
 
   <!-- Option 2: Use if deploying to a servlet container (Tomcat, Jetty, etc) -->
 
-  <dependency>
+ <!-- <dependency>
     <groupId>com.sun.faces</groupId>
     <artifactId>jsf-api</artifactId>
     <version>2.2.10</version>
@@ -230,7 +230,7 @@
     <groupId>com.sun.faces</groupId>
     <artifactId>jsf-impl</artifactId>
     <version>2.2.10</version>
-  </dependency>
+  </dependency>-->
 
   <!-- Jersey -->
   <!--<dependency>
@@ -253,6 +253,12 @@
       <groupId>org.glassfish.jersey.ext</groupId>
       <artifactId>jersey-bean-validation</artifactId>
       <version>2.25.1</version>
+    </dependency>
+    <!-- https://github.com/swagger-api/swagger-core/issues/1170 -->
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-jersey-jaxrs</artifactId>
+      <version>1.5.18</version>
     </dependency>
 
 </dependencies>
