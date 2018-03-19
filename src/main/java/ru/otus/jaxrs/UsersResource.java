@@ -51,11 +51,16 @@ public class UsersResource {
     @ApiResponses({
         @ApiResponse(code = 200, message = "A valid user")
     })
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "username", value = "User's name", dataType = "string", paramType = "form"),
+        @ApiImplicitParam(name = "firstname", value = "First name", dataType = "string", paramType = "form"),
+        @ApiImplicitParam(name = "lastname", value = "Last name", dataType = "string", paramType = "form"),
+        @ApiImplicitParam(name = "email", value = "User's email", dataType = "string", paramType = "form")
+    })
     public User createUser(/*@NotBlank(message="{user.name.notnull}") @FormParam("username") String username,
                            @NotBlank(message="{user.firstname.notnull}") @FormParam("firstname") String firstname,
                            @NotBlank(message="{user.lastname.notnull}") @FormParam("lastname") String lastname,
                            @NotBlank(message="{user.email}") @Email @FormParam("email") String email*/
-
                @Valid @BeanParam User user) {
         return user;//new User(username, firstname, lastname, email);
     }

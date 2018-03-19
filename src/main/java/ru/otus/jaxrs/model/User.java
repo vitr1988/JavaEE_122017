@@ -1,13 +1,25 @@
 package ru.otus.jaxrs.model;
 
+import io.swagger.annotations.ApiParam;
+
 import javax.ws.rs.FormParam;
 
 public class User {
 
+    @ApiParam(value = "username", required = true)
     @FormParam("username")
     private String username;
+
+    @ApiParam(value = "firstname", required = true)
+    @FormParam("firstname")
     private String firstname;
+
+    @ApiParam(value = "lastname", required = true)
+    @FormParam("lastname")
     private String lastname;
+
+    @ApiParam(value = "email", required = true)
+    @FormParam("email")
     private String email;
 
     public User() {

@@ -7,8 +7,11 @@ import javax.ws.rs.client.ClientResponseFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Provider
 public class ClientLoggingFilter implements ClientRequestFilter, ClientResponseFilter {
@@ -19,6 +22,8 @@ public class ClientLoggingFilter implements ClientRequestFilter, ClientResponseF
         for (Map.Entry<String, List<Object>> e : crc.getHeaders().entrySet()) {
           String key = e.getKey();
           List<Object> value = e.getValue();
+          System.out.println("Header name " + key + " with value : " + value.stream().map(Object::toString)
+                    .collect(Collectors.joining(", ")));
         }
     }
 
@@ -28,6 +33,8 @@ public class ClientLoggingFilter implements ClientRequestFilter, ClientResponseF
         for (Map.Entry<String, List<Object>> e : crc.getHeaders().entrySet()) {
             String key = e.getKey();
             List<Object> value = e.getValue();
+            System.out.println("Header name " + key + " with value : " + value.stream().map(Object::toString)
+                    .collect(Collectors.joining(", ")));
         }
     }
 }

@@ -1,7 +1,7 @@
 package ru.otus.jaxrs;
 
-import io.swagger.annotations.*;
-import io.swagger.jaxrs.config.BeanConfig;
+import ru.otus.jaxrs.async.CabBookingResource;
+import ru.otus.jaxrs.async.ReportResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -39,5 +39,7 @@ public class RestApplication extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(RestfulCalculator.class);
         resources.add(UsersResource.class);
+        resources.add(CabBookingResource.class);
+        resources.add(ReportResource.class);
     }
 }
