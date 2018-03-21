@@ -2,6 +2,8 @@ package ru.otus.jaxrs;
 
 import ru.otus.jaxrs.async.CabBookingResource;
 import ru.otus.jaxrs.async.ReportResource;
+import ru.otus.jaxrs.exception.MyExceptionMapper;
+import ru.otus.jaxrs.exception.RuntimeExceptionMapper;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -28,12 +30,21 @@ public class RestApplication extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
         addRestResourceClasses(resources);
-
+        addExceptionMapperClasses(resources);
         // enable Swagger
-        resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
-        resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+        addSwaggerClasses(resources);
 
         return resources;
+    }
+
+    private void addSwaggerClasses(Set<Class<?>> resources) {
+        resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
+        resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+    }
+
+    private void addExceptionMapperClasses(Set<Class<?>> resources) {
+        resources.add(MyExceptionMapper.class);
+        resources.add(RuntimeExceptionMapper.class);
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {

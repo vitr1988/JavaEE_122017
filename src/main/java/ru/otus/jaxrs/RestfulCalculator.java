@@ -64,7 +64,9 @@ public class RestfulCalculator implements Calculatable {
             @ApiParam(value = "value for subtraction", required = true)
             @PathParam("value2") double value2) {
         if (value2 == 0) {
-            throw new WebApplicationException("Div by 0 is prohibited");
+            throw new WebApplicationException(
+                    Response.status(Response.Status.BAD_REQUEST)
+                            .entity("Div by 0 is prohibited").type(MediaType.TEXT_PLAIN).build());
         }
         int answer = (int) value1 / (int) value2;
         String msg = String.format("calcDivTwoValues==> value1: %10.4f, value2: %10.4f, answer: %10.4f",
