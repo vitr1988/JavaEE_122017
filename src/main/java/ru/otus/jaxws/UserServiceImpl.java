@@ -2,10 +2,9 @@ package ru.otus.jaxws;
 
 import ru.otus.jaxrs.model.User;
 
-import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-@WebService(endpointInterface = " ru.otus.jaxws.UserService")
+@WebService(endpointInterface="ru.otus.jaxws.UserService")
 public class UserServiceImpl implements UserService {
 
     @Override

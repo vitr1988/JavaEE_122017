@@ -1,6 +1,7 @@
 package ru.otus.jaxws;
 
-import com.sun.org.apache.xml.internal.resolver.Catalog;
+import ru.otus.jaxws.client.DateProvider;
+import ru.otus.jaxws.client.DateWebService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,28 +12,27 @@ import javax.xml.ws.WebServiceRef;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "WebServiceServlet")
+@WebServlet(name = "WebServiceServlet", urlPatterns = "/dateWebService")
 public class WebServiceServlet extends HttpServlet {
 
-    @WebServiceRef(type=DateWebService.class)
+    //service instance injected...
+    @WebServiceRef(type = DateWebService.class)
     private DateWebService service;
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-//        //service instance injected...
-//        Catalog port = service.getDatePort();
-//        Date currentDate = port.getCurrentDate();
-//        try (PrintWriter out = response.getWriter()) {
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>WebServiceRef Test</title>");
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Title= " + currentDate + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
+        DateProvider port = service.getDateWebService();
+        String currentDate = port.getCurrentDate();
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>WebServiceRef Test</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Title= " + currentDate + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-@WebService(serviceName = "DateService", name = "DateProvider")
+@WebService(serviceName = "DateWebService", name = "DateProvider")
 public class DateWebService implements DateProvider {
 
     @WebMethod

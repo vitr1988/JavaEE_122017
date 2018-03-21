@@ -35,7 +35,7 @@ public class RESTfulWeather implements Provider<Source> {
         StringBuffer text = new StringBuffer("");
         String city = query_string.split("=")[1];
         try {
-            URL url = new URL("http://api.openweathermap.org/data/2.5/weather?appid=3d58903046050728d7b36ce11b3ce32d&q=" + city);
+            URL url = new URL("http://api.openweathermap.org/data/2.5/weather?appid=3d58903046050728d7b36ce11b3ce32d&mode=xml&q=" + city);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
