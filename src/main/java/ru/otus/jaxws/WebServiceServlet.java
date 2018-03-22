@@ -16,12 +16,12 @@ import java.io.PrintWriter;
 public class WebServiceServlet extends HttpServlet {
 
     //service instance injected...
-    @WebServiceRef(type = DateWebService.class)
+    @WebServiceRef
     private DateWebService service;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DateProvider port = service.getDateWebService();
+        DateProvider port = service.getDateProviderPort();
         String currentDate = port.getCurrentDate();
         try (PrintWriter out = response.getWriter()) {
             out.println("<html>");
@@ -34,5 +34,4 @@ public class WebServiceServlet extends HttpServlet {
             out.println("</html>");
         }
     }
-
 }
