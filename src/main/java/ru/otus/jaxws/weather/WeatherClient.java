@@ -17,7 +17,7 @@ import java.net.URL;
 public class WeatherClient {
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
         // GET requests
-        URL url=new URL("http://127.0.0.1:8700/weather?city=moscow");
+        URL url = new URL("http://127.0.0.1:8700/weather?city=moscow");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.connect();

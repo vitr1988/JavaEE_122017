@@ -25,7 +25,7 @@ import javax.xml.ws.soap.SOAPBinding;
 @WebService
 //@BindingType(value = SOAPBinding.SOAP11HTTP_MTOM_BINDING)
 //@BindingType(value = SOAPBinding.SOAP12HTTP_MTOM_BINDING)
-@MTOM(enabled = true, threshold = 10240/*in bytes*/)
+@MTOM(threshold = 10240/*in bytes*/)
 public class FileTransferer {
 
     @Resource
