@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "DateWebService", targetNamespace = "http://jaxws.otus.ru", wsdlLocation = "http://localhost:8080/JavaEE/DateWebService?wsdl")
+@WebServiceClient(name = "DateWebService", targetNamespace = "http://jaxws.otus.ru/", wsdlLocation = "http://localhost:8080/JavaEE/DateWebService?wsdl")
 public class DateWebService
     extends Service
 {
 
     private final static URL DATEWEBSERVICE_WSDL_LOCATION;
     private final static WebServiceException DATEWEBSERVICE_EXCEPTION;
-    private final static QName DATEWEBSERVICE_QNAME = new QName("http://jaxws.otus.ru", "DateWebService");
+    private final static QName DATEWEBSERVICE_QNAME = new QName("http://jaxws.otus.ru/", "DateWebService");
 
     static {
         URL url = null;
@@ -67,9 +67,9 @@ public class DateWebService
      * @return
      *     returns DateProvider
      */
-    @WebEndpoint(name = "DateWebService")
-    public DateProvider getDateWebService() {
-        return super.getPort(new QName("http://jaxws.otus.ru", "DateWebService"), DateProvider.class);
+    @WebEndpoint(name = "DateProviderPort")
+    public DateProvider getDateProviderPort() {
+        return super.getPort(new QName("http://jaxws.otus.ru/", "DateProviderPort"), DateProvider.class);
     }
 
     /**
@@ -79,9 +79,9 @@ public class DateWebService
      * @return
      *     returns DateProvider
      */
-    @WebEndpoint(name = "DateWebService")
-    public DateProvider getDateWebService(WebServiceFeature... features) {
-        return super.getPort(new QName("http://jaxws.otus.ru", "DateWebService"), DateProvider.class, features);
+    @WebEndpoint(name = "DateProviderPort")
+    public DateProvider getDateProviderPort(WebServiceFeature... features) {
+        return super.getPort(new QName("http://jaxws.otus.ru/", "DateProviderPort"), DateProvider.class, features);
     }
 
     private static URL __getWsdlLocation() {
