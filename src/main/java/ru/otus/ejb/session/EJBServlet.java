@@ -1,5 +1,8 @@
 package ru.otus.ejb.session;
 
+import ru.otus.ejb.session.statefull.EmployeeManageable;
+import ru.otus.ejb.session.stateless.SimpleBean;
+
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +19,12 @@ public class EJBServlet extends HttpServlet {
     SimpleBean bean;
 
     @EJB
-    PersistenceBean dataBean;
+    EmployeeManageable dataBean;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try(PrintWriter pw = response.getWriter()) {
-            pw.println(bean.sayHello("World"));
-
-            pw.println(dataBean.getEmployeeName(1));
+            pw.println(bean.sayHello(dataBean.getEmployeeName(Long.valueOf(request.getParameter("id")))));
         }
     }
 }

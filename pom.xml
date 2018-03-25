@@ -273,6 +273,14 @@
       <artifactId>gf-client</artifactId>
       <version>5.0</version>
     </dependency>-->
+
+    <dependency>
+      <groupId>org.glassfish.main.appclient.client</groupId>
+      <artifactId>gf-client</artifactId>
+      <version>5.0</version>
+      <scope>system</scope>
+      <systemPath>C:/JavaEE/glassfish5/glassfish/lib/gf-client.jar</systemPath>
+    </dependency>
 </dependencies>
 
 <!-- Oracle Maven Repository -->

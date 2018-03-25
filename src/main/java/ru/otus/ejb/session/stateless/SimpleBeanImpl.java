@@ -1,12 +1,10 @@
-package ru.otus.ejb.session;
+package ru.otus.ejb.session.stateless;
 
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-@Stateless(name="Example", mappedName="ejb/SimpleBeanJNDI")
+@Stateless(name="SimpleBean", mappedName = "ejb/SimpleBean")
 public class SimpleBeanImpl implements SimpleBean {
 
     @Resource

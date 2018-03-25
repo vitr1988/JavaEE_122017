@@ -1,12 +1,13 @@
 package ru.otus.jdbc.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Objects;
 
 @Entity
 @Table(name = "EMP", schema = "SCOTT", catalog = "")
-public class EmpEntity {
+public class EmpEntity implements Serializable {
     private long empno;
     private String ename;
     private String job;
