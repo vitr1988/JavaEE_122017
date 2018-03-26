@@ -1,5 +1,7 @@
 package ru.otus.ejb.session.client;
 
+//import ru.otus.ejb.session.stateless.SimpleBean;
+
 import ru.otus.ejb.session.stateless.SimpleBean;
 
 import javax.naming.InitialContext;

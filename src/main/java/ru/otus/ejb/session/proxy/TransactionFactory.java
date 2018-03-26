@@ -25,6 +25,7 @@ public class TransactionFactory {
             Class<?> daoClass = dao.getClass();
             Method implementingMethod = daoClass.getMethod(
                     method.getName(), method.getParameterTypes());
+            System.out.println("Origin Class :" + daoClass.getName());
             return method.invoke(dao, args);
         }
     }
