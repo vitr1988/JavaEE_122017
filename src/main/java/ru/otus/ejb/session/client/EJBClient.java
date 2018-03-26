@@ -1,10 +1,5 @@
 package ru.otus.ejb.session.client;
 
-//import ru.otus.ejb.session.singleton.EmployeeCacheable;
-//import ru.otus.ejb.session.statefull.EmployeeManageable;
-//import ru.otus.ejb.session.stateless.SimpleBean;
-
-import ru.otus.ejb.session.singleton.EmployeeCacheable;
 import ru.otus.ejb.session.statefull.EmployeeManageable;
 import ru.otus.ejb.session.stateless.SimpleBean;
 
@@ -19,15 +14,10 @@ public class EJBClient {
 //        SimpleBean bean2 = (SimpleBean) context.lookup("java:app/JavaEE_122017-1.0-SNAPSHOT/Example!ru.otus.ejb.session.SimpleBean");
 //        SimpleBean bean3 = (SimpleBean) context.lookup("java:module/Example!ru.otus.ejb.session.SimpleBean");
 
-        EmployeeCacheable cacheBean = (EmployeeCacheable) context.lookup("java:global/JavaEE_122017-1.0-SNAPSHOT/SingletonBean!ru.otus.ejb.session.singleton.EmployeeCacheable");
-
         String result = bean.sayHello("World!");
         System.out.println(result);
 
         String data = dataBean.getEmployeeName(7936L);
         System.out.println(data);
-
-        String employee = cacheBean.get(7935L);
-        System.out.println(employee);
     }
 }
