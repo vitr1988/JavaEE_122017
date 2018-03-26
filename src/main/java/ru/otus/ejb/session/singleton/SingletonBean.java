@@ -1,9 +1,11 @@
 package ru.otus.ejb.session.singleton;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Remove;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
+import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
+import javax.ejb.*;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,9 +15,13 @@ public class SingletonBean implements EmployeeCacheable {
 
     private Map<Long, String> map;
 
+    @Resource
+    TimerService timerService;
+
     @PostConstruct
     private void init(){
         map = new ConcurrentHashMap<>();
+        timerService.createTimer(0,1000, "Every second timer with no delay");
     }
 
     @Override
@@ -28,7 +34,12 @@ public class SingletonBean implements EmployeeCacheable {
         return map.get(key);
     }
 
-    @Remove
+    @Schedule(hour = "*", minute = "*", second = "*/5", info = "Every 5 seconds timer")
+    public void automaticallyScheduled(Timer timer) {
+
+    }
+
+    @PreDestroy
     public void destroy() {
         map.clear();
     }
