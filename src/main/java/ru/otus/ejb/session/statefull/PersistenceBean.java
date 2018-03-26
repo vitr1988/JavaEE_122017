@@ -43,8 +43,8 @@ public class PersistenceBean implements EmployeeManageable{
     }
 
 
-    @PrePassivate
-    @Remove
+//    @PrePassivate
+//    @Remove
     public void commit(){
         if (!"READY".equalsIgnoreCase(status)) {
             throw new RuntimeException("You can't be here");
