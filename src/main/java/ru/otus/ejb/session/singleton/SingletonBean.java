@@ -1,16 +1,11 @@
 package ru.otus.ejb.session.singleton;
 
-import ru.otus.ejb.session.statefull.EmpEntity;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
-import javax.ejb.*;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Date;
+import javax.ejb.Schedule;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import javax.ejb.Timer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
