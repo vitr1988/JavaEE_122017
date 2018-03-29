@@ -5,7 +5,7 @@
         <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
         <!--<non-jta-data-source>java:comp/env/jdbc/OracleDS</non-jta-data-source>-->
         <jta-data-source>jdbc/OracleDS</jta-data-source>
-        <class>ru.otus.jdbc.model.EmpEntity</class>
+        <class>ru.otus.ejb.session.statefull.EmpEntity</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
             <property name="hibernate.format_sql" value="true"/>

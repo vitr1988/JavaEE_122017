@@ -1,6 +1,6 @@
 package ru.otus.jdbc;
 
-import ru.otus.jdbc.model.EmpEntity;
+import ru.otus.ejb.session.statefull.EmpEntity;
 
 import javax.persistence.*;
 import javax.servlet.ServletException;
