@@ -1,4 +1,4 @@
-package ru.otus.jdbc.model;
+package ru.otus.ejb.session.statefull;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,7 +6,7 @@ import java.sql.Time;
 import java.util.Objects;
 
 @Entity
-@Table(name = "EMP", schema = "SCOTT", catalog = "")
+@Table(name = "EMP", /*schema = "SCOTT", */catalog = "")
 public class EmpEntity implements Serializable {
     private long empno;
     private String ename;
@@ -119,3 +119,4 @@ public class EmpEntity implements Serializable {
                 '}';
     }
 }
+
