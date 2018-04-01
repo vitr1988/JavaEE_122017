@@ -6,7 +6,7 @@ import java.sql.Time;
 import java.util.Objects;
 
 @Entity
-@Table(name = "EMP", /*schema = "SCOTT", */catalog = "")
+@Table(name = "EMP")
 public class EmpEntity implements Serializable {
     private long empno;
     private String ename;

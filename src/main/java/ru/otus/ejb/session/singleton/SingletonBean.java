@@ -6,6 +6,8 @@ import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.ejb.Timer;
+import javax.interceptor.AroundTimeout;
+import javax.interceptor.InvocationContext;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -42,5 +44,10 @@ public class SingletonBean implements EmployeeCacheable {
     @PreDestroy
     public void destroy() {
         map.clear();
+    }
+
+    @AroundTimeout
+    public Object timeoutInterceptorMethod(InvocationContext ctx) throws Exception {
+        return ctx.proceed();
     }
 }

@@ -7,13 +7,20 @@ import lombok.NoArgsConstructor;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 @XmlRootElement(name="dataList")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TestDataWrapper {
 
     @XmlElement(name="data")
     private List<TestData> data;
+
+    public TestDataWrapper() {
+    }
+
+    public TestDataWrapper(List<TestData> data) {
+        this.data = data;
+    }
 }
