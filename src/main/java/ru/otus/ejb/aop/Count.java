@@ -1,14 +1,22 @@
 package ru.otus.ejb.aop;
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import java.io.Serializable;
 
-@Stateless
+@Stateful
 public class Count implements Serializable {
 
+    int count = 1;
+
     @Interceptors(Logger.class)
-    public String getResult() {
-        return null;
+    public int getResult() {
+        return count;
+    }
+
+    public void increment(){
+        count++;
     }
 
 }

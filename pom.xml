@@ -281,6 +281,18 @@
       <scope>system</scope>
       <systemPath>C:/JavaEE/glassfish5/glassfish/lib/gf-client.jar</systemPath>
     </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.8.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.9</version>
+    </dependency>
 </dependencies>
 
 <!-- Oracle Maven Repository -->
@@ -326,6 +338,42 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>aspectj-maven-plugin</artifactId>
+        <version>1.7</version>
+        <configuration>
+          <complianceLevel>1.8</complianceLevel>
+          <source>1.8</source>
+          <target>1.8</target>
+          <showWeaveInfo>true</showWeaveInfo>
+          <verbose>true</verbose>
+          <Xlint>ignore</Xlint>
+          <encoding>UTF-8</encoding>
+          <sources>
+            <source>
+              <basedir>src/main/java</basedir>
+              <includes>
+                <include>**/Account.java</include>
+                <include>**/AccountAspect.aj</include>
+              </includes>
+              <excludes>
+                <exclude>**/*.java</exclude>
+              </excludes>
+            </source>
+          </sources>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <!-- use this goal to weave all your main classes -->
+              <goal>compile</goal>
+              <!-- use this goal to weave all your test classes -->
+              <goal>test-compile</goal>
+           </goals>
+         </execution>
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
