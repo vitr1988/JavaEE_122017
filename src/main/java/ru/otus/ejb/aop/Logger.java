@@ -14,8 +14,12 @@ public class Logger {
     @AroundInvoke
     public Object addLog(InvocationContext context) throws Exception {
         //какая-то логика логирования
-        System.out.println("Operation has been fixed at " + DATE_TIME_FORMATTER.format(LocalDateTime.now()));
-        return context.proceed();
+        if (context.getTarget() instanceof Count) {
+            System.out.println("Operation has been fixe at " + DATE_TIME_FORMATTER.format(LocalDateTime.now()));
+        }
+        Object result = context.proceed();
+        //TODO: after code
+        return result;
     }
 
     @PostConstruct

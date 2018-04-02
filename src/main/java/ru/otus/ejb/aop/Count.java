@@ -6,11 +6,12 @@ import javax.interceptor.Interceptors;
 import java.io.Serializable;
 
 @Stateful
+@Interceptors({Logger.class/*, Logger.class*/})
 public class Count implements Serializable {
 
     int count = 1;
 
-    @Interceptors(Logger.class)
+//    @Interceptors(Logger.class)
     public int getResult() {
         return count;
     }
