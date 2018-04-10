@@ -1,5 +1,8 @@
 package ru.otus.cdi;
 
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
+import javax.enterprise.inject.spi.CDI;
 import javax.inject.Inject;
 
 import javax.servlet.ServletException;
@@ -13,13 +16,14 @@ import java.io.PrintWriter;
 @WebServlet(name = "MessageCDIServlet", urlPatterns = "/messagecdi")
 public class MessageCDIServlet extends HttpServlet {
 
+//    @Any
     @Inject
-    Message message;
+    private /*Instance<*/Message/*>*/ message; //= CDI.current().select(Message.class).get();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try (PrintWriter out = response.getWriter()) {
-            out.println(message.get());
+            out.println(message/*.get()*/.get());
         }
     }
 }
