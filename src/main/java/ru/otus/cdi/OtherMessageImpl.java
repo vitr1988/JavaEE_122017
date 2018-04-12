@@ -14,6 +14,6 @@ import javax.inject.Named;
 public class OtherMessageImpl implements Message {
     @Override
     public String get() {
-        return "Hi there";
+        return "Привет мир";
     }
 }

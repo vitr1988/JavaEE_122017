@@ -1,6 +1,7 @@
 package ru.otus.cdi;
 
 import ru.otus.cdi.event.MessageEvent;
+import ru.otus.cdi.qualifier.LanguageEnum;
 import ru.otus.cdi.qualifier.MessageType;
 import sun.plugin2.message.EventMessage;
 
@@ -17,12 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(name = "MessageCDIServlet", urlPatterns = "/messagecdi")
 public class MessageCDIServlet extends HttpServlet {
 
     @Inject
-    @MessageType
+    @MessageType(LanguageEnum.RUSSIAN)
     private Message message; //= CDI.current().select(Message.class).get();
 
 //    @Inject
@@ -36,7 +38,7 @@ public class MessageCDIServlet extends HttpServlet {
 //    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=" + StandardCharsets.UTF_8.name());
         try (PrintWriter out = response.getWriter()) {
             out.println(message.get());
         }
