@@ -1,8 +1,16 @@
 package ru.otus.cdi;
 
-import javax.enterprise.inject.Alternative;
+import ru.otus.cdi.qualifier.LanguageEnum;
+import ru.otus.cdi.qualifier.MessageType;
 
-@Alternative
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Alternative;
+import javax.inject.Named;
+
+//@Alternative
+@MessageType(value = LanguageEnum.RUSSIAN, description = "other message impl")
+@Named("message")
+@RequestScoped
 public class OtherMessageImpl implements Message {
     @Override
     public String get() {
