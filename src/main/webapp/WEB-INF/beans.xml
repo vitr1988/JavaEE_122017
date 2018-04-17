@@ -5,5 +5,15 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
+    <!--<alternatives>
+        <class>ru.otus.cdi.OtherMessageImpl</class>
+    </alternatives>-->
 
+    <!--<interceptors>
+        <class></class>
+    </interceptors>-->
+
+    <decorators>
+        <class>ru.otus.cdi.decorator.MessageDecorator</class>
+    </decorators>
 </beans>

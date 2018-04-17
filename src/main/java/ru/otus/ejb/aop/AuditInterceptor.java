@@ -12,7 +12,10 @@ public class AuditInterceptor {
 
     @AroundInvoke
     public Object audit(InvocationContext ictx) throws Exception {
+        //before
         //logic goes here
-        return ictx.proceed();
+        Object result = ictx.proceed();
+        //after
+        return result;
     }
 }

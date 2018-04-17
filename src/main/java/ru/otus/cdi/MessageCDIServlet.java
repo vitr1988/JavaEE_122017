@@ -3,6 +3,7 @@ package ru.otus.cdi;
 import ru.otus.cdi.event.MessageEvent;
 import ru.otus.cdi.qualifier.LanguageEnum;
 import ru.otus.cdi.qualifier.MessageType;
+import ru.otus.cdi.qualifier.Time;
 import sun.plugin2.message.EventMessage;
 
 import javax.enterprise.event.Event;
@@ -24,8 +25,15 @@ import java.nio.charset.StandardCharsets;
 public class MessageCDIServlet extends HttpServlet {
 
     @Inject
-    @MessageType(LanguageEnum.RUSSIAN)
+//    @MessageType(LanguageEnum.RUSSIAN)
     private Message message; //= CDI.current().select(Message.class).get();
+
+    @Time
+    @Inject
+    private String currentDateAsString;
+
+    @Inject
+    Event<MessageEvent> event;
 
 //    @Inject
 //    public MessageCDIServlet(Message message){
@@ -40,7 +48,10 @@ public class MessageCDIServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=" + StandardCharsets.UTF_8.name());
         try (PrintWriter out = response.getWriter()) {
-            out.println(message.get());
+            String text = message.get();
+            out.println(text);
+            out.println("Current Date: " + currentDateAsString);
+            event.fire(new MessageEvent(text));
         }
     }
 }

@@ -2,6 +2,7 @@ package ru.otus.jms.v2_0;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.jms.Destination;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
@@ -17,11 +18,11 @@ import java.io.PrintWriter;
 public class JMSServlet extends HttpServlet {
 
     @Inject
-    @JMSConnectionFactory("jms/ConnectionFactory")
+    @JMSConnectionFactory("jms/TopicConnectionFactory")
     private JMSContext context;
 
-    @Resource(lookup = "jms/Queue")
-    private Queue dataQueue;
+    @Resource(lookup = "jms/Topic")
+    private Destination dataQueue; // Topic or Queue
 
     public void sendMessageJavaEE7(String body) {
         context.createProducer().send(dataQueue, body);
@@ -29,7 +30,7 @@ public class JMSServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        sendMessageJavaEE7("Hello World");
+        sendMessageJavaEE7("Hello from servlet");
 
         response.setContentType("text/html");
         try(PrintWriter pw = response.getWriter()){
