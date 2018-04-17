@@ -7,9 +7,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 
-@Alternative
-//@MessageType(value = LanguageEnum.RUSSIAN, description = "other message impl")
-//@Named("message")
+//@Alternative
+@MessageType(value = LanguageEnum.RUSSIAN, description = "other message impl")
+@Named("message")
 @RequestScoped
 public class OtherMessageImpl implements Message {
     @Override

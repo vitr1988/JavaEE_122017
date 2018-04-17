@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 public class MessageCDIServlet extends HttpServlet {
 
     @Inject
-//    @MessageType(LanguageEnum.RUSSIAN)
+    @MessageType(LanguageEnum.RUSSIAN)
     private Message message; //= CDI.current().select(Message.class).get();
 
     @Time

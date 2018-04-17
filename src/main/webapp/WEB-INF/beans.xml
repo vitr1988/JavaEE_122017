@@ -10,10 +10,10 @@
     </alternatives>-->
 
     <!--<interceptors>
-        <class></class>
+        <class>ru.otus.cdi.OtherMessageImpl</class>
     </interceptors>-->
 
-    <decorators>
+    <!--<decorators>
         <class>ru.otus.cdi.decorator.MessageDecorator</class>
-    </decorators>
+    </decorators>-->
 </beans>
