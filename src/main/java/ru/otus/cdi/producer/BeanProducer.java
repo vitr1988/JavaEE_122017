@@ -18,7 +18,7 @@ public class BeanProducer {
         return DateTimeFormatter.ofPattern("dd.MM.yyyy").format(LocalDateTime.now());
     }
 
-    public void close(@Disposes String str) {
+    public void close(@Disposes @Time String str) {
         str = null;
     }
 }
