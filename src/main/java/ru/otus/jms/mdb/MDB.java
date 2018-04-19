@@ -9,7 +9,7 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 @MessageDriven(
-        mappedName="jms/Queue", //имя topic или queue, на который подписан бин
+        mappedName="jms/Topic", //имя topic или queue, на который подписан бин
         name = "ExampleMDB")
 public class MDB implements MessageListener {
 

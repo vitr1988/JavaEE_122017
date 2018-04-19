@@ -293,7 +293,15 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.8.9</version>
     </dependency>
-</dependencies>
+
+    <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.11</version>
+    </dependency>
+
+  </dependencies>
 
 <!-- Oracle Maven Repository -->
   <repositories>

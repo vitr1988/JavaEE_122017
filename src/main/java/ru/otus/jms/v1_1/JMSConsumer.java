@@ -19,8 +19,7 @@ public class JMSConsumer {
         TopicConnection topicConn = connFactory.createTopicConnection();
 
         // create a topic session
-        TopicSession topicSession = topicConn.createTopicSession(false,
-                Session.AUTO_ACKNOWLEDGE);
+        TopicSession topicSession = topicConn.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);
 
         // create a topic subscriber
         TopicSubscriber topicSubscriber = topicSession.createSubscriber(topic);
@@ -44,6 +43,23 @@ public class JMSConsumer {
             else {
                 Thread.sleep(3 * 1000);
             }
+
+//            topicSubscriber.setMessageListener(new MessageListener() {
+//                @Override
+//                public void onMessage(Message message) {
+//                    if (index == 5) {
+//                        System.out.println("Message received: " + message.getText());
+//                        break;
+//                    } else if (Objects.nonNull(message.getText())) {
+//                        // print the message
+//                        System.out.println("Message received: " + message.getText());
+//                        index++;
+//                    }
+//                    else {
+//                        Thread.sleep(3 * 1000);
+//                    }
+//                }
+//            });
         }
 
         // close the topic connection

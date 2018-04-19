@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebListener;
 public class JMSConnectionListener implements ServletContextListener {
 
     //получаем ресурсы сервера для отправки сообщений
-    @Resource(name="jms/ConnectionFactory")
+    @Resource(name="jms/TopicConnectionFactory")
     private ConnectionFactory connectionFactory;
 
     @Resource(name="jms/Topic")

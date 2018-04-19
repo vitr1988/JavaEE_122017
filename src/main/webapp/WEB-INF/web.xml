@@ -108,4 +108,13 @@
             <!--<transport-guarantee>CONFIDENTIAL</transport-guarantee>-->
         <!--</user-data-constraint>-->
     <!--</security-constraint>-->
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>SecurityRealm</realm-name>
+    </login-config>
+    <security-role>
+        <description>Administrators of the system</description>
+        <role-name>ADMIN</role-name>
+    </security-role>
 </web-app>
