@@ -45,6 +45,46 @@
         <url-pattern>*.jsf</url-pattern>
         <url-pattern>*.faces</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MetricsServlet</servlet-name>
+        <servlet-class>io.prometheus.client.exporter.MetricsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MetricsServlet</servlet-name>
+        <url-pattern>/metrics</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>prometheusFilter</filter-name>
+        <filter-class>io.prometheus.client.filter.MetricsFilter</filter-class>
+        <init-param>
+            <param-name>metric-name</param-name>
+            <param-value>webapp_metrics_filter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>help</param-name>
+            <param-value>This is the help for your metrics filter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>buckets</param-name>
+            <param-value>0.005,0.01,0.025,0.05,0.075,0.1,0.25,0.5,0.75,1,2.5,5,7.5,10</param-value>
+        </init-param>
+        <!-- Optionally override path components; anything less than 1 (1 is the default)
+             means full granularity -->
+        <init-param>
+            <param-name>path-components</param-name>
+            <param-value>1</param-value>
+        </init-param>
+    </filter>
+
+    <!-- You will most likely want this to be the first filter in the chain
+    (therefore the first <filter-mapping> in the web.xml file), so that you can get
+    the most accurate measurement of latency. -->
+    <filter-mapping>
+        <filter-name>prometheusFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!--<servlet>
         <servlet-name>jersey</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -109,12 +149,35 @@
         <!--</user-data-constraint>-->
     <!--</security-constraint>-->
 
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>SecurityRealm</realm-name>
-    </login-config>
     <security-role>
         <description>Administrators of the system</description>
         <role-name>ADMIN</role-name>
     </security-role>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>JMS</web-resource-name>
+            <url-pattern>/login.jsp</url-pattern>
+            <url-pattern>/jms</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <!--<role-name>MANAGER</role-name>-->
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>SecurityRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/WEB-INF/login.html</form-login-page>
+            <form-error-page>/WEB-INF/loginError.html</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <!--<login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>SecurityRealm</realm-name>
+    </login-config>-->
+
 </web-app>
