@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 @WebServlet(name = "ReportServlet", urlPatterns = "/report")
 public class ReportServlet extends HttpServlet {
@@ -21,11 +22,15 @@ public class ReportServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ReportFiller filler = new ReportFiller();
         filler.setDataSource(dataSource);
+        filler.setParameters(new HashMap<String, Object>() {
+            {
+                put("reportTitle", "Otus Report Data");
+            }
+        });
         filler.setReportFileName(otusReport +  ".jrxml");
         filler.prepareReport();
 
         response.setContentType("application/pdf");
-
         response.setHeader("Expires", "0");
         response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
         response.setHeader("Pragma", "public");

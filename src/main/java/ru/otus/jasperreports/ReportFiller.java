@@ -1,6 +1,7 @@
 package ru.otus.jasperreports;
 
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRSaver;
 import org.apache.log4j.Logger;
 
@@ -8,6 +9,7 @@ import javax.sql.DataSource;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +49,8 @@ public class ReportFiller {
     public void fillReport() {
         try {
             jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource.getConnection());
+//            JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(Arrays.asList(new Employee()));
+//            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, jrBeanCollectionDataSource);
         } catch (JRException | SQLException ex) {
             logger.error(null, ex);
         }
