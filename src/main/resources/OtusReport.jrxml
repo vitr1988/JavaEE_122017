@@ -7,6 +7,9 @@
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="476"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="510"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="reportTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Employee Data"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select e.empno, e.ename, d.dname from emp e, dept d
 where e.deptno=d.deptno]]>
@@ -21,14 +24,14 @@ where e.deptno=d.deptno]]>
 		<property name="com.jaspersoft.studio.field.label" value="DNAME"/>
 	</field>
 	<title>
-		<band height="51">
-			<staticText>
-				<reportElement x="0" y="0" width="575" height="30" uuid="c2a234e0-da76-4b8c-8f5f-aca09d1a6d0c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+		<band height="30">
+			<textField>
+				<reportElement x="0" y="0" width="575" height="30" uuid="b11c6b4c-fea5-41a2-bab5-ad37c72d8d9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font size="18" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Employee Data]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement x="406" y="10" width="149" height="20" uuid="bc05e93f-e898-4e29-85ad-7693d5b28046"/>
 				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.helloWorld()]]></textFieldExpression>
