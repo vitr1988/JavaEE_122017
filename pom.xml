@@ -1,3 +1,4 @@
+<!--suppress MavenModelInspection -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -17,6 +18,7 @@
     <jersey.version>2.26</jersey.version>
     <log4j.version>2.9.1</log4j.version>
     <prometheus.client.version>0.3.0</prometheus.client.version>
+    <jasperreports.version>6.5.1</jasperreports.version>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
   </properties>
 
@@ -63,17 +65,23 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${hibernate.version}</version>
     </dependency>
-    <!--<dependency>
+    <dependency>
       <groupId>com.oracle.jdbc</groupId>
       <artifactId>ojdbc6</artifactId>
       <version>11.2.0.4</version>
       <scope>compile</scope>
-    </dependency>-->
+    </dependency>
     <dependency>
       <groupId>ru.otus.resource</groupId>
       <artifactId>ObjectResourceFactory</artifactId>
       <version>1.0-SNAPSHOT</version>
       <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ru.otus</groupId>
+      <artifactId>scriptlet</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
 
     <dependency>
@@ -333,6 +341,27 @@
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+      <version>5.0.1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>commons-logging</artifactId>
+          <groupId>commons-logging</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+     <groupId>org.apache.poi</groupId>
+     <artifactId>poi</artifactId>
+     <version>3.15</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.15</version>
     </dependency>
   </dependencies>
 

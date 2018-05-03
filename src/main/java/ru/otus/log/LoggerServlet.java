@@ -1,5 +1,6 @@
 package ru.otus.log;
 
+import com.sun.enterprise.security.ee.auth.login.ProgrammaticLogin;
 import org.apache.log4j.Logger;
 
 import javax.inject.Inject;
@@ -34,5 +35,13 @@ public class LoggerServlet extends HttpServlet {
             logger.error(e.getLocalizedMessage());
         }
         logger.info("Http method get had finished");
+
+        ProgrammaticLogin login = new ProgrammaticLogin();
+        try {
+            boolean authenticated = login.login("<your_login>", "<your_pass>", "<your_custom_realm>", req, resp, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

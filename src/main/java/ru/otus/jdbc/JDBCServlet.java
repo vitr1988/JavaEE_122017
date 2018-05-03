@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 @WebServlet("/JDBCServlet")
 public class JDBCServlet extends HttpServlet {
 
-    @Resource(name = "jdbc/OracleDS")
+    @Resource(mappedName = "jdbc/OracleDS")
     private DataSource ds;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
