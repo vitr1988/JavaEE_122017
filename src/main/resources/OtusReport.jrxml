@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OtusReport" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" scriptletClass="ru.otus.jasperreports.CustomScriptlet" uuid="6e843fe2-ce72-4257-a4c3-1df03728dc95">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.9075000000000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle Data Adapter "/>
@@ -28,12 +28,15 @@ where e.deptno=d.deptno]]>
 			<textField>
 				<reportElement x="0" y="0" width="575" height="30" uuid="b11c6b4c-fea5-41a2-bab5-ad37c72d8d9a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font size="18" isItalic="true"/>
+					<font fontName="Tahoma" size="18" isItalic="true" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="406" y="10" width="149" height="20" uuid="bc05e93f-e898-4e29-85ad-7693d5b28046"/>
+				<textElement>
+					<font fontName="Tahoma" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.helloWorld()]]></textFieldExpression>
 			</textField>
 		</band>
@@ -43,23 +46,23 @@ where e.deptno=d.deptno]]>
 			<staticText>
 				<reportElement x="0" y="0" width="69" height="24" uuid="012424cf-712d-4e84-9906-776e1850b85a"/>
 				<textElement>
-					<font size="15" isBold="true"/>
+					<font fontName="Tahoma" size="15" isBold="true" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" x="229" y="0" width="94" height="24" uuid="724d23ca-6ad1-4be5-bae1-77c07dd31ba0"/>
 				<textElement textAlignment="Left">
-					<font size="15" isBold="true"/>
+					<font fontName="Tahoma" size="15" isBold="true" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[LastName]]></text>
+				<text><![CDATA[Lastname]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="443" y="0" width="128" height="24" uuid="1e85a3f6-ba9d-47a7-8f25-cf37f5b4448d"/>
+				<reportElement x="443" y="0" width="112" height="24" uuid="1e85a3f6-ba9d-47a7-8f25-cf37f5b4448d"/>
 				<textElement>
-					<font size="15" isBold="true"/>
+					<font fontName="Tahoma" size="15" isBold="true" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[Department]]></text>
+				<text><![CDATA[Департамент]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -68,21 +71,21 @@ where e.deptno=d.deptno]]>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="69" height="24" uuid="d844cada-1aa4-4208-9fc1-dcdf62a72235"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Tahoma" size="12" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{EMPNO}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="229" y="0" width="94" height="24" uuid="14399970-e399-41e0-b6f9-1218079fd56c"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Tahoma" size="12" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ENAME}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="443" y="0" width="97" height="24" uuid="b5b0fe03-9b8f-48c6-ba51-c218427028f6"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Tahoma" size="12" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DNAME}]]></textFieldExpression>
 			</textField>

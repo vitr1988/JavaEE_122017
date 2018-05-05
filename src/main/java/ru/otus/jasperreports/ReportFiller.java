@@ -2,6 +2,8 @@ package ru.otus.jasperreports;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JRDesignFont;
+import net.sf.jasperreports.engine.util.JRProperties;
 import net.sf.jasperreports.engine.util.JRSaver;
 import org.apache.log4j.Logger;
 
@@ -49,6 +51,7 @@ public class ReportFiller {
     public void fillReport() {
         try {
             jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource.getConnection());
+
 //            JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(Arrays.asList(new Employee()));
 //            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, jrBeanCollectionDataSource);
         } catch (JRException | SQLException ex) {

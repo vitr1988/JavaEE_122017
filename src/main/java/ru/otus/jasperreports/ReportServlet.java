@@ -24,7 +24,8 @@ public class ReportServlet extends HttpServlet {
         filler.setDataSource(dataSource);
         filler.setParameters(new HashMap<String, Object>() {
             {
-                put("reportTitle", "Otus Report Data");
+//                put("reportTitle", "Otus Report Data");
+                put("reportTitle", "Новый заголовок");
             }
         });
         filler.setReportFileName(otusReport +  ".jrxml");
