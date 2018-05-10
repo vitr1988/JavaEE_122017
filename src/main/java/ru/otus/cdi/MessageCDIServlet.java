@@ -4,12 +4,8 @@ import ru.otus.cdi.event.MessageEvent;
 import ru.otus.cdi.qualifier.LanguageEnum;
 import ru.otus.cdi.qualifier.MessageType;
 import ru.otus.cdi.qualifier.Time;
-import sun.plugin2.message.EventMessage;
 
 import javax.enterprise.event.Event;
-import javax.enterprise.inject.Any;
-import javax.enterprise.inject.Instance;
-import javax.enterprise.inject.spi.CDI;
 import javax.inject.Inject;
 
 import javax.servlet.ServletException;
